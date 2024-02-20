@@ -430,7 +430,7 @@
 <script>
     try{
         fetch(`${baseURL}/api/cms?type=About-Us`).then((data)=>data.json()).then((data)=>{
-            console.log(data.data[0])
+            // console.log(data.data[0])
             let obj = data?.data[0];
             let url1  = obj?.images.length>0?`${baseURL}/uploads/${obj.images[0]}`:''
             let url2  = obj?.images.length>1?`${baseURL}/uploads/${obj.images[1]}`:''
