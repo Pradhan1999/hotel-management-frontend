@@ -166,14 +166,10 @@
         <div class="container" id="about-cont">
             <div class="row" id="home-about-row">
                 <div class="col-12 col-lg-6" id="left-abt-col">
-                    <img class="home-abt-img" src="./assets/media/Outdoors/IMG_1762.jpg" alt="home-abt-img">
+                    <img class="home-abt-img" id="image1" alt="home-abt-img">
                 </div>
                 <div class="col-12 col-lg-6" id="right-abt-col">
-                    <h2 class="header-h2">About Gordon Resort</h2>
-                    <p class="text-parag">Hotel Varuna Grand popularly known as McCarthy Beach is located in the University town of Abraka in Delta State. <br>
-                    It is famous for its Natural white sandy Beach and serene environment.<br>
-                    Set out in large expanse of land of over 65 hectares the resort boasts of over 90 exquisitely appointed and tastefully furnished Rooms/Suites. The expansive gardens are breathtaking and the sereneness of the complex is without doubt, alluring.</p>
-
+                   
                     <button class="yellow-btn" onclick="window.location.href = './about.html'">Learn More</button>
                 </div>
             </div>
@@ -285,13 +281,23 @@
                 
 
                 <div class="col-12 col-lg-6" id="left-beach-section">
-                    <img class="beach-img" src="./assets/media/Beach/beach.jpg" alt="">
+                    <img class="beach-img" id="image2" alt="">
                 </div>
                 
                 <div class="col-12 col-lg-6" id="right-beach-section">
-                    <h2 class="header-h2"> The (McCarthy) Beach</h2>
-                    <p class="text-parag "> The beach is delightful to sit in overlooking the River-Ethope. Cool down  in the crystal clear pool, enjoy marvels of Abraka.
 
+
+                        <br>
+                        Hotel Varuna Grand, Abraka, Delta State, Nigeria, provides you with “McCarthy Beach” – the place of choice for your vacations, picnics, weekend getaways, games, parties, outdoor social and corporate events, etc.
+                        <br>
+                        Swim or be sailed in our live boat around the safe waters of River Ethiope. Feel the difference natural and artificial waters.
+                        <br>
+                        Enjoy a very chilled bottle of bear or soft drink at our beach bar as you are caressed by the soft-cool wind of a natural river.
+                        <br>
+                        Visit our Barbeque and Hot Sausage Beach Spot, Phosky's Cocktails and get taste of the good life. The aroma, and taste will blow your mind and the taste shall last forever.
+                        Do you need to heat-up before diving into the beach? No worries, we several beach games such as volleyball, football, paintball, and so much more.</p>
+                        <br>
+                    
                         <br>
                         Hotel Varuna Grand, Abraka, Delta State, Nigeria, provides you with “McCarthy Beach” – the place of choice for your vacations, picnics, weekend getaways, games, parties, outdoor social and corporate events, etc.
                         <br>
@@ -315,7 +321,7 @@
     <!-- Beach End -->
 
     <!-- Video -->
-    <section class="video-section">
+    <!-- <section class="video-section">
         <div class="container" id="video-cont">
             <div class="row" id="video-row">
                 <div class="col-12" id="video-col">
@@ -326,11 +332,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Video End -->
 
    <!-- Reviews -->
-   <section class="review-section">
+   <!-- <section class="review-section">
     <div class="container">
         <div class="row">
             <div class="col-12" id="review-col">
@@ -341,7 +347,7 @@
             </div>
         </div>
     </div>
-   </section>
+   </section> -->
    
    <!-- Reviews End -->
 
@@ -369,7 +375,7 @@
             <div class="row" id="footer-row">
                 <div class="col-12 col-lg-4">
                     <img class="footer-logo" src="./assets/media/logo2.jpeg" alt="footer-logo">
-                    <p class="footer-text">Hotel Varuna Grand popularly known as McCarthy Beach is located in the University town of Abraka in Delta State.
+                    <p class="footer-text id ">Hotel Varuna Grand popularly known as McCarthy Beach is located in the University town of Abraka in Delta State.
                         Set out in large expanse of land of over 65 hectares the resort boasts of over 90 exquisitely appointed and tastefully furnished Rooms/Suites. 
                     </p>
                 </div>
@@ -420,4 +426,23 @@
 
   
 </body>
+<script src="config.js"></script>
+<script>
+    try{
+        fetch(`${baseURL}/api/cms?type=About-Us`).then((data)=>data.json()).then((data)=>{
+            console.log(data.data[0])
+            let obj = data?.data[0];
+            let url1  = obj?.images.length>0?`${baseURL}/uploads/${obj.images[0]}`:''
+            let url2  = obj?.images.length>1?`${baseURL}/uploads/${obj.images[1]}`:''
+            let heading = obj.title
+            let content1 = obj.content1
+            let content2 = obj.content2
+            document.getElementById('right-beach-section').innerHTML=content2;
+            document.getElementById('right-abt-col').innerHTML=content1;
+            document.getElementById('image1').src=url1;
+            document.getElementById('image2').src=url2;
+                });
+    }catch(e){
+    }
+</script>
 </html>

@@ -126,25 +126,6 @@
                     <img class="split-images" src="./assets/media/Outdoors/cut-images/image_part_003.jpg" alt="">
                 </div>
                 <div class="col-12 col-md-6" id="right-abt-col">
-                    <h2 class="header-h2">About Gordon Resort</h2>
-
-                    <p class="about-text-parag">Hotel Varuna Grand popularly known as McCarthy Beach is located in the University town of Abraka in Delta State. 
-                        <br>
-                        It is famous for its Natural white sandy Beach and serene environment.
-                        <br>
-                        Set out in large expanse of land of over 65 hectares the resort boasts of over 90 exquisitely appointed and tastefully furnished Rooms/Suites. The expansive gardens are breathtaking and the sereneness of the complex is without doubt, alluring.
-                        The beach nestling on the banks of the fast flowing, crystal clear River Ethiope is inviting and relaxing.
-                        <br>
-                        The Resort situates along the Abraka/Benin Highway and is easily accessible by road and by air. The Osubi Airport near Warri is only 30minutes drive to the Resort. 
-                        <br>
-
-                        Several Bars are available and serve assorted alcoholic and non-alcoholic beverages.
-                        <br>
-                        The Restaurant offers assorted National and Continental cuisines and also mouth watering snacks.
-                        <br>
-
-                        It is a highly recommended get-away and popular picnic/ tourist destination. It also hosts conferences, seminars and other training activities.
-                    </p>
                 </div>
             </div>
         </div>
@@ -228,4 +209,23 @@
 
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+<script src="config.js"></script>
+<script>
+    try{
+        fetch(`${baseURL}/api/cms?type=About-Us`).then((data)=>data.json()).then((data)=>{
+            console.log(data.data[0])
+            let obj = data?.data[0];
+            let url1  = obj?.images.length>0?`${baseURL}/uploads/${obj.images[0]}`:''
+            let url2  = obj?.images.length>1?`${baseURL}/uploads/${obj.images[1]}`:''
+            let heading = obj.title
+            let content1 = obj.content1
+            let content2 = obj.content2
+            // document.getElementById('right-beach-section').innerHTML=content2;
+            document.getElementById('right-abt-col').innerHTML=content1;
+            document.getElementById('image1').src=url1;
+            // document.getElementById('image2').src=url2;
+                });
+    }catch(e){
+    }
+</script>
 </html>
