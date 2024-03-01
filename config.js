@@ -1,2 +1,2 @@
 // config.js
-const baseURL = 'https://hotel-backend-ahus.onrender.com';
+const baseURL = 'https://api.hotelvarunagrand.com';
