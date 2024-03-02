@@ -69,6 +69,16 @@ font-family: 'Raleway', sans-serif;
 overflow-x: hidden;
 }
 
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0; /* Align the header to the left edge of the viewport */
+    right: 0; /* Align the header to the right edge of the viewport */
+    width: 100%;
+    z-index: 1000; 
+    background-color: #fff;
+    border-radius: 20px;
+}
 
 
 .link {
